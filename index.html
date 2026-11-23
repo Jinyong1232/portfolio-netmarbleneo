@@ -457,7 +457,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pj-head dt{color:var(--soft)}.pj-head dd{margin:0}
 .pj-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .sc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto 1fr;column-gap:16px}
-.sc.sc3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sc.sc3{grid-template-columns:1fr;grid-template-rows:none;row-gap:14px}
+.sc3 .sc-card{grid-row:auto;grid-template-rows:none;grid-template-columns:15em minmax(0,1fr);column-gap:36px;row-gap:12px;padding:26px 28px}
+.sc3 .sc-card header{grid-column:1;grid-row:1/3;padding:0 28px 0 0;border-bottom:0;border-right:1px solid var(--rule)}
+.sc3 .sc-lead,.sc3 .sc-list{grid-column:2}
 .sc-card{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:14px;align-content:start;min-width:0;padding:24px 22px 22px;border-radius:20px;background:var(--surface)}
 .sc-card header{display:flex;flex-direction:column;gap:8px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
 .sc-k{margin:0;font-size:14px;font-weight:700;color:var(--soft)}
@@ -468,7 +471,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .sc-list{display:grid;gap:10px;align-content:start;margin:0;padding:0}
 .sc-list li{align-self:start;position:relative;padding-left:14px;font-size:14px;line-height:1.7;color:var(--soft);list-style:none;text-wrap:pretty}
 .sc-list li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--soft)}
-@media (max-width:980px){.sc,.sc.sc3{grid-template-columns:1fr;grid-template-rows:none;row-gap:16px}.sc-card{display:flex;flex-direction:column;padding:22px 18px 18px}}
+@media (max-width:860px){.sc,.sc.sc3{grid-template-columns:1fr;grid-template-rows:none;row-gap:16px}.sc-card,.sc3 .sc-card{display:flex;flex-direction:column;padding:22px 18px 18px}.sc3 .sc-card header{padding:0 0 14px;border-right:0;border-bottom:1px solid var(--rule)}}
 .pj-sub{display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:700;font-size:20px;margin:40px 0 16px}
 .pj-sub::after{content:"";flex:1;height:1px;background:var(--rule)}
 .flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:f}
@@ -1146,8 +1149,8 @@ p{text-wrap:pretty}
     </ol>
     <h3 class="pj-sub" style="margin-top:44px">공고에 적힌 세 가지 역량</h3>
     <div class="sc sc3">
-      <article class="sc-card"><header><p class="sc-k">AI 리더십</p><p class="sc-n"><strong>PR 354건</strong><span>10/6 ~ 11/22 main에 합친 작업, 제 몫 141건</span></p></header><p class="sc-lead">기획자 5명이 각자 Claude Code로 한 게임을 만드는 환경을 설계했습니다.</p><ul class="sc-list"><li>팀 규칙(CLAUDE.md)과 훅을 직접 만들어 5명이 쓰는 AI가 모두 같은 기준으로 일하게 했습니다.</li><li>디스코드 작업현황 채널에 봇을 연결해 작업 시작과 종료를 명령어 한 줄로 올리게 했습니다. 세션을 열면 AI가 채널부터 읽고 남이 잠근 씬·프리팹과 겹치는지 확인합니다.</li><li>개발 경험이 거의 없는 팀원 넷도 첫 2주 동안 PR을 9 ~ 14건씩 올렸습니다.</li></ul></article>
-      <article class="sc-card"><header><p class="sc-k">구조화 능력</p><p class="sc-n"><strong>290 / 298</strong><span>네 칸 양식으로 올린 PR 중 '확인할 것'까지 채운 수</span></p></header><p class="sc-lead">PR 본문을 한 일, 기획서와 달라진 점, 확인할 것, 테스트한 것 네 칸으로 고정했습니다.</p><ul class="sc-list"><li>기획서는 영역별 문서 69개로 나눠 AI가 맡은 작업의 문서만 읽게 했습니다.</li><li>PR이 합쳐지면 '확인할 것'에 이름이 적힌 팀원의 AI가 그 항목을 먼저 보여 줍니다.</li><li>재미는 가설과 지표로 나눠 테스트 전에 정했습니다. 목표 수치가 있는 지표 11개는 판이 끝날 때 게임이 통과·미달을 직접 기록합니다.</li></ul></article>
+      <article class="sc-card"><header><p class="sc-k">AI 리더십</p><p class="sc-n"><strong>PR 354건</strong><span>10/6 ~ 11/22 main에 합친 작업, <span style="white-space:nowrap">제 몫 141건</span></span></p></header><p class="sc-lead">기획자 5명이 각자 Claude Code로 한 게임을 만드는 환경을 설계했습니다.</p><ul class="sc-list"><li>팀 규칙(CLAUDE.md)과 훅을 직접 만들어 5명이 쓰는 AI가 모두 같은 기준으로 일하게 했습니다.</li><li>디스코드 작업현황 채널에 봇을 연결해 작업 시작과 종료를 명령어 한 줄로 올리게 했습니다. 세션을 열면 AI가 채널부터 읽고 남이 잠근 씬·프리팹과 겹치는지 확인합니다.</li><li>개발 경험이 거의 없는 팀원 넷도 첫 2주 동안 PR을 9 ~ 14건씩 올렸습니다.</li></ul></article>
+      <article class="sc-card"><header><p class="sc-k">구조화 능력</p><p class="sc-n"><strong>290 / 298</strong><span>네 칸 양식으로 올린 PR 중 <span style="white-space:nowrap">'확인할 것'까지</span> 채운 수</span></p></header><p class="sc-lead">PR 본문을 한 일, 기획서와 달라진 점, 확인할 것, 테스트한 것 네 칸으로 고정했습니다.</p><ul class="sc-list"><li>기획서는 영역별 문서 69개로 나눠 AI가 맡은 작업의 문서만 읽게 했습니다.</li><li>PR이 합쳐지면 '확인할 것'에 이름이 적힌 팀원의 AI가 그 항목을 먼저 보여 줍니다.</li><li>재미는 가설과 지표로 나눠 테스트 전에 정했습니다. 목표 수치가 있는 지표 11개는 판이 끝날 때 게임이 통과·미달을 직접 기록합니다.</li></ul></article>
       <article class="sc-card"><header><p class="sc-k">학습 실행력</p><p class="sc-n"><strong>1명 → 5명</strong><span>혼자 쓰던 방식을 한 달 만에 5인 팀으로</span></p></header><p class="sc-lead">9/7 Claude Code 실무 교육에서 규칙·문서·검증 절차로 AI가 일할 환경부터 짜는 방법을 배웠습니다. 그날 바로 「여우는 죄가 없다」를 시작해 2주 만에 5스테이지를 만들었습니다.</p><ul class="sc-list"><li>팀 규칙은 쓰면서 8번 고쳤고 그중 한 번은 팀원이 직접 더했습니다.</li><li>10/8 패키지 충돌이 난 날 'main 따라가기' 규칙을 만들었고 나흘 뒤 1시간마다 main을 확인하는 훅으로 바꿨습니다.</li><li>10/23 첫 플레이테스트 결과를 보고 강공격을 몰린 상대를 휩쓰는 기술로 바꿨습니다. 강공격을 한 번이라도 쓴 사람이 59%에서 100%가 됐습니다.</li></ul></article>
     </div>
   </section>
